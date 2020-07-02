@@ -1,0 +1,19 @@
+.myCart {
+	overflow: auto;
+}
+.cartlist img {
+	width: 70px;
+	height: 70px;
+}
+.emptycrt {
+	text-align: center;
+	margin-top: 25%;
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+	.emptycrt {
+		margin-top: 70%;
+	}
+}

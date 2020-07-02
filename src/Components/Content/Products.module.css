@@ -1,0 +1,55 @@
+.card {
+	padding: 20px;
+	cursor: pointer;
+	transition: all 0.8s linear;
+	border: transparent;
+	font-family: 'Oswald', sans-serif;
+}
+.card a {
+	font-family: 'Roboto', sans-serif;
+	text-decoration: none;
+	color: black;
+}
+.btn {
+	transform: translate(100%, 100%);
+	border-radius: 0.5rem 0 0 0;
+	font-size: 1.4rem;
+	background: #009ffd;
+	color: #f3f3f3;
+	padding: 0.4rem 0.4rem;
+	border: none;
+	transition: all 0.8s linear;
+	width: 75px;
+	height: 50px;
+	text-transform: capitalize;
+	margin-left: 240px;
+	text-align: center;
+}
+.btn p {
+	margin-bottom: 5px;
+	text-align: center;
+	font-size: 13px;
+	color: #f3f3f3;
+	word-spacing: 0.1rem;
+	line-height: 1.4rem;
+}
+
+.card:hover .btn {
+	transform: translate(0, 0);
+}
+.card:hover .img {
+	transform: scale(1.2);
+	transition: all 0.8s linear;
+}
+
+.img {
+	height: 240px;
+}
+@media (max-width: 600px) {
+	.btn {
+		width: 55px;
+		height: 40px;
+		margin-left: 255px;
+		font-size: 1rem;
+	}
+}

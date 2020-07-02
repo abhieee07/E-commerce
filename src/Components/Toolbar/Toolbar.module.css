@@ -1,0 +1,58 @@
+.Toolbar {
+	width: 100%;
+	background-color: #2a2a72;
+	height: 65px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-sizing: border-box;
+	z-index: 90;
+}
+.Toolbar img {
+	height: 47px;
+}
+.Toolbar li {
+	list-style: none;
+}
+
+.Toolbar button {
+	color: white;
+	background-color: transparent;
+	float: right;
+	padding: 4px 15px;
+	font-size: 1.4rem;
+	cursor: pointer;
+	text-transform: capitalize;
+	border: 0.05rem solid #009ffd;
+	color: #009ffd;
+	border-radius: 0.5rem;
+	outline: none;
+}
+button:hover {
+	background: #009ffd;
+	color: #2a2a72;
+}
+.Toolbar button :focus {
+	outline: none;
+}
+.Toolbar a {
+	list-style: none;
+	margin-right: 60px;
+	color: white;
+	text-decoration: none;
+	font-size: 1.3rem;
+	text-transform: capitalize;
+}
+
+@media (max-width: 600px) {
+	.Toolbar a {
+		margin-right: 30px;
+		margin-left: -10px;
+	}
+	.Toolbar button {
+		padding: 3px 8px;
+	}
+}

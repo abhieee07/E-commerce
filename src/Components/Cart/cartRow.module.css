@@ -1,0 +1,17 @@
+.row {
+	display: flex;
+	flex-flow: row;
+	text-align: center;
+	justify-content: space-around;
+}
+.row p {
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+}
+@media (max-width: 600px) {
+	.row p {
+		font-size: 13px;
+	}
+}
