@@ -19,7 +19,7 @@ const CartItem = (props) => {
             <div className={classes.quantity}>
                 <button className={classes.box} disabled={props.value.count <= 1 ? true : false} onClick={() => { props.Decrement(props.value.id) }}> - </button>
                 <button className={classes.box}>{props.value.count}</button>
-                <button className={classes.box} disabled={props.value.stock === props.value.itemPurchased ? true : false} onClick={() => { props.Increment(props.value.id) }}> + </button>
+                <button className={classes.box} disabled={props.value.stock === props.value.count ? true : false} onClick={() => { props.Increment(props.value.id) }}> + </button>
 
             </div>
             <div className={classes.count}><button

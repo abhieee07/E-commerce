@@ -6,7 +6,7 @@ import Products from './Products'
 
 class ProductsList extends Component {
     render() {
-        console.log(this.props.storeProducts);
+        // console.log(this.props.storeProducts);
 
         return (
             <React.Fragment>

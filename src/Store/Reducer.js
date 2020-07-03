@@ -12,7 +12,7 @@ const initialstate = {
 }
 
 const Reducer = (state = initialstate, action) => {
-    console.log(state)
+    console.log(state.detailProd)
     const findProduct = (id) => {
         const product = state.storeProd.find(item => item.id === id)
         return product
@@ -33,12 +33,11 @@ const Reducer = (state = initialstate, action) => {
             let tempProd = [...state.storeProd]
             const index = tempProd.indexOf(findProduct(action.cartId))
             const crtProduct = tempProd[index]
-            if (crtProduct.itemPurchased < 10) {
+            if (crtProduct.count < 10) {
                 crtProduct.inCart = true
                 crtProduct.count = 1
                 const price = crtProduct.price
                 crtProduct.total = price
-                crtProduct.itemPurchased += 1
                 var prodTotal = state.subTotal + crtProduct.price
             }
             return {
@@ -74,11 +73,10 @@ const Reducer = (state = initialstate, action) => {
             let incProd = crtInc[incProdInd]
             let incSubTotal
             let tempTax
-            if (incProd.stock > 0) {
+            if (incProd.count <= incProd.stock) {
                 let count = incProd.count;
                 incProd.count = count + 1;
                 incProd.total += incProd.price;
-                incProd.itemPurchased += 1;
                 incSubTotal = state.subTotal + incProd.price
                 tempTax = (incSubTotal * 0.1).toFixed(2)
             }
@@ -99,14 +97,11 @@ const Reducer = (state = initialstate, action) => {
             let decProd = crtDec[decProdInd]
             let decSubTotal
             let decTax
-            if (decProd.count !== decProd.itemPurchased) {
+            if (decProd.count > 0) {
                 decProd.count = decProd.count - 1;
                 decProd.total -= decProd.price
-                decProd.itemPurchased -= 1
                 decSubTotal = state.subTotal - decProd.price
                 decTax = (decSubTotal * 0.1).toFixed(2)
-
-
             }
             return {
                 ...state,
@@ -117,15 +112,13 @@ const Reducer = (state = initialstate, action) => {
                 totalTax: decTax,
                 finalPrice: decSubTotal + (decSubTotal * 0.1)
 
-
-
             }
         case "CLEAR_CART":
             state.storeProd.map(prod => {
                 return (
                     prod.inCart = false,
                     prod.total = 0,
-                    prod.itemPurchased = 0
+                    prod.count = 0
                 )
             })
             return {
@@ -141,9 +134,11 @@ const Reducer = (state = initialstate, action) => {
             }
         case "PRODUCT_PURCHASED":
             state.storeProd.map(prod => {
+                console.log(prod.stock -= prod.count)
                 return (
                     prod.inCart = false,
-                    prod.total = 0
+                    prod.total = 0,
+                    prod.count = 0
                 )
             })
             return {

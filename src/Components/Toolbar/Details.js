@@ -12,6 +12,7 @@ class Details extends Component {
 
 
     render() {
+        console.log(this.props.detailprod.customerReview.firstStar)
         return (
             <div className={classes.section}>
                 <div className={classes.header}>
@@ -33,21 +34,37 @@ class Details extends Component {
                             <Button raised primary>Go Back</Button>
                         </Link>
                         <Button raised accent
-                            disabled={this.props.detailprod.itemPurchased === this.props.detailprod.stock ? true : this.props.detailprod.inCart ? true : false}
+                            disabled={this.props.detailprod.count === this.props.detailprod.stock ? true : this.props.detailprod.inCart ? true : false}
                             onClick={() => {
                                 this.props.openModel(this.props.detailprod.id)
                                 this.props.cartAdded(this.props.detailprod.id)
                             }}>
-                            {this.props.detailprod.itemPurchased === this.props.detailprod.stock ? "Out Of Stock " : this.props.detailprod.inCart ? "Incart" : "Add To Cart"}
+                            {this.props.detailprod.count >= this.props.detailprod.stock ? "Out Of Stock " : this.props.detailprod.inCart ? "Incart" : "Add To Cart"}
                         </Button>
 
                     </div >
                 </div>
                 <div className={classes.review}>
                     <h3>Customer reviews</h3>
+                    <div className={classes.firstUser}>
+                        <h5 className={classes.box}> {this.props.detailprod.customerReview.firstStar} <i className="fa fa-star" aria-hidden="true"></i> </h5>
+                        <h5 > Anonymous user</h5>
+                    </div>
+                    <h4>{this.props.detailprod.customerReview.first}</h4>
+                    <div className={classes.firstUser}>
+                        <h5 className={classes.box}>{this.props.detailprod.customerReview.secondStar} <i className="fa fa-star" aria-hidden="true"></i> </h5>
+                        <h5> Anonymous user</h5>
+                    </div>
+                    <h4>{this.props.detailprod.customerReview.second}</h4>
+                    <div className={classes.firstUser}>
+                        <h5 className={classes.box}>{this.props.detailprod.customerReview.thirdStar} <i className="fa fa-star" aria-hidden="true"></i> </h5>
+                        <h5> Anonymous user</h5>
+                    </div>
+                    <h4>{this.props.detailprod.customerReview.third}</h4>
+
                 </div>
 
-            </div>
+            </div >
 
 
         )
@@ -71,7 +88,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details);
-
-
-
-

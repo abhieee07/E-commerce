@@ -12,7 +12,6 @@ class Products extends Component {
 
 
     render() {
-        console.log(this.props.detailprod.id);
 
         return (
             <div className={classes.card} onClick={() => this.props.oncliked(this.props.details.id)} >
@@ -28,7 +27,7 @@ class Products extends Component {
                                 // this.props.openModel(this.props.details.id)cd..
                                 this.props.cartAdded(this.props.details.id)
                             }}>
-                            {this.props.details.itemPurchased === this.props.details.stock ? (<p disabled >Out of  Stock</p>) :
+                            {this.props.details.count >= this.props.details.stock ? (<p disabled >Out of  Stock</p>) :
                                 this.props.details.inCart ? (
                                     <p disabled>In cart</p>
                                 ) : (
